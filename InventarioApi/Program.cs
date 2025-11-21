@@ -68,13 +68,19 @@ builder.Services.AddAuthentication(options =>
 
 
 // --------------------------------
-// 1.5 Controladores para la API
+// 1.5 Registro de servicios personalizados
+// --------------------------------
+
+
+
+// --------------------------------
+// 1.6 Controladores para la API
 // --------------------------------
 builder.Services.AddControllers();
 
 
 // --------------------------------
-// 1.6 Swagger + Configuración JWT
+// 1.7 Swagger + Configuración JWT
 // --------------------------------
 // Swagger permite probar la API desde el navegador
 builder.Services.AddEndpointsApiExplorer();
