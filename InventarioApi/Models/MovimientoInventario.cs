@@ -6,7 +6,7 @@ namespace InventarioApi.Models
     {
         public int Id { get; set; }
         public int ProductoId {  get; set; }
-        public Producto producto { get; set; }
+        public Producto Producto { get; set; }
 
         public DateTime Fecha {  get; set; }
 

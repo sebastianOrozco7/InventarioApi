@@ -240,17 +240,24 @@ namespace InventarioApi.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Precio = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Precio = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Descripcion = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StockActual = table.Column<int>(type: "int", nullable: false),
+                    UsuarioId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CategoriaId = table.Column<int>(type: "int", nullable: false),
                     ProvedorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Productos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Productos_AspNetUsers_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Productos_Categorias_CategoriaId",
                         column: x => x.CategoriaId,
@@ -343,6 +350,11 @@ namespace InventarioApi.Migrations
                 name: "IX_Productos_ProvedorId",
                 table: "Productos",
                 column: "ProvedorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Productos_UsuarioId",
+                table: "Productos",
+                column: "UsuarioId");
         }
 
         /// <inheritdoc />
@@ -370,10 +382,10 @@ namespace InventarioApi.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Productos");
 
             migrationBuilder.DropTable(
-                name: "Productos");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Categorias");

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace InventarioApi.Models
 {
@@ -10,7 +11,7 @@ namespace InventarioApi.Models
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "El Precio es obligatorio")]
-        public string Precio {  get; set; }
+        public decimal Precio {  get; set; }
 
         [MaxLength(200, ErrorMessage = "La Descripcion es demasiado larga, resumela")]
         public string Descripcion {  get; set; }
@@ -18,13 +19,16 @@ namespace InventarioApi.Models
         [Required(ErrorMessage = "El Stock es obligatorio")]
         public int StockActual {  get; set; }
 
+        public string UsuarioId {  get; set; }
+        public IdentityUser Usuario {  get; set; }
+
         public int CategoriaId {  get; set; }
-        public Categoria categoria { get; set; }
+        public Categoria Categoria { get; set; }
 
         public int ProvedorId {  get; set; }
-        public Provedor provedor {  get; set; }
+        public Provedor Provedor {  get; set; }
 
-        public List<MovimientoInventario> Movimientos = new List<MovimientoInventario>();
+        public List<MovimientoInventario> Movimientos { get; set; } = new List<MovimientoInventario>();
 
     }
 }

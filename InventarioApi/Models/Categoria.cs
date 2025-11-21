@@ -13,6 +13,6 @@ namespace InventarioApi.Models
         [MaxLength(200, ErrorMessage = "La Descripcion es demasiado larga, resumela")]
         public string Descripcion {  get; set; }
 
-        public List<Producto> Productos = new List<Producto>();
+        public List<Producto> Productos { get; set; } = new List<Producto>();
     }
 }

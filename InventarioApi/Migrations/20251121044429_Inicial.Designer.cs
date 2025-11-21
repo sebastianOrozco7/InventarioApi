@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InventarioApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251121024801_Inicial")]
+    [Migration("20251121044429_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
@@ -100,9 +100,8 @@ namespace InventarioApi.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Precio")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<int>("ProvedorId")
                         .HasColumnType("int");
@@ -110,11 +109,17 @@ namespace InventarioApi.Migrations
                     b.Property<int>("StockActual")
                         .HasColumnType("int");
 
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoriaId");
 
                     b.HasIndex("ProvedorId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Productos");
                 });
@@ -343,32 +348,40 @@ namespace InventarioApi.Migrations
 
             modelBuilder.Entity("InventarioApi.Models.MovimientoInventario", b =>
                 {
-                    b.HasOne("InventarioApi.Models.Producto", "producto")
+                    b.HasOne("InventarioApi.Models.Producto", "Producto")
                         .WithMany("Movimientos")
                         .HasForeignKey("ProductoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("producto");
+                    b.Navigation("Producto");
                 });
 
             modelBuilder.Entity("InventarioApi.Models.Producto", b =>
                 {
-                    b.HasOne("InventarioApi.Models.Categoria", "categoria")
+                    b.HasOne("InventarioApi.Models.Categoria", "Categoria")
                         .WithMany("Productos")
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("InventarioApi.Models.Provedor", "provedor")
+                    b.HasOne("InventarioApi.Models.Provedor", "Provedor")
                         .WithMany("productos")
                         .HasForeignKey("ProvedorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("categoria");
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("provedor");
+                    b.Navigation("Categoria");
+
+                    b.Navigation("Provedor");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

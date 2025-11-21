@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace InventarioApi.Data
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public AppDbContext(DbContextOptions options) : base(options)
         { 
@@ -24,19 +24,19 @@ namespace InventarioApi.Data
             // relacion categoria ---> productos
             modelBuilder.Entity<Categoria>()
                 .HasMany(c => c.Productos)
-                .WithOne(p => p.categoria)
+                .WithOne(p => p.Categoria)
                 .HasForeignKey(p => p.CategoriaId);
 
             //relacion provedor ---> prodcutos 
             modelBuilder.Entity<Provedor>()
                 .HasMany(pr => pr.productos)
-                .WithOne(p => p.provedor)
+                .WithOne(p => p.Provedor)
                 .HasForeignKey(p => p.ProvedorId);
 
             //relacion producto ---> movimientos
             modelBuilder.Entity<Producto>()
                 .HasMany(p => p.Movimientos)
-                .WithOne(m => m.producto)
+                .WithOne(m => m.Producto)
                 .HasForeignKey(m => m.ProductoId);
         }
     }

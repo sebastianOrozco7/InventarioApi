@@ -16,6 +16,6 @@ namespace InventarioApi.Models
         [Required(ErrorMessage = "El Email es obligatorio")]
         public string Email {  get; set; }
 
-        public List<Producto> productos = new List<Producto>();
+        public List<Producto> productos { get; set; } = new List<Producto>();
     }
 }
