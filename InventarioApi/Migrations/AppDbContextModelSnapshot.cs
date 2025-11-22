@@ -90,8 +90,7 @@ namespace InventarioApi.Migrations
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Nombre")
                         .IsRequired()

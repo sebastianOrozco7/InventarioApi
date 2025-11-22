@@ -5,6 +5,8 @@ using Microsoft.IdentityModel.Tokens;
 using InventarioApi.Data;
 using InventarioApi.Services;
 using Microsoft.OpenApi.Models;
+using AutoMapper;
+using InventarioApi.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,17 +72,24 @@ builder.Services.AddAuthentication(options =>
 // --------------------------------
 // 1.5 Registro de servicios personalizados
 // --------------------------------
+builder.Services.AddScoped<IProductoService, ProductoService>();
 
 
 
 // --------------------------------
-// 1.6 Controladores para la API
+// 1.6 Registro de AutoMapper
+// --------------------------------
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+
+
+// --------------------------------
+// 1.7 Controladores para la API
 // --------------------------------
 builder.Services.AddControllers();
 
 
 // --------------------------------
-// 1.7 Swagger + Configuración JWT
+// 1.8 Swagger + Configuración JWT
 // --------------------------------
 // Swagger permite probar la API desde el navegador
 builder.Services.AddEndpointsApiExplorer();

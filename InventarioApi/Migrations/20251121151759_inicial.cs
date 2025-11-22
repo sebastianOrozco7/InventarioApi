@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InventarioApi.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicial : Migration
+    public partial class inicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -241,7 +241,7 @@ namespace InventarioApi.Migrations
                     Nombre = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Precio = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
-                    Descripcion = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false)
+                    Descripcion = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StockActual = table.Column<int>(type: "int", nullable: false),
                     UsuarioId = table.Column<string>(type: "varchar(255)", nullable: false)

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InventarioApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251121044429_Inicial")]
-    partial class Inicial
+    [Migration("20251121151759_inicial")]
+    partial class inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,8 +93,7 @@ namespace InventarioApi.Migrations
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
