@@ -109,7 +109,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "Bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Ingresa: {tu_token}"
+        Description = "Ingresa: Bearer {tu_token}"
     });
 
     // Swagger requiere que una API especifique qué esquema usa

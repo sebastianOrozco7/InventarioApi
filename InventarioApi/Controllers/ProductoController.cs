@@ -25,7 +25,7 @@ namespace InventarioApi.Controllers
         private string ObtenerUsuarioId()
         {
             // El ID del usuario viene dentro del token JWT como Claim
-            return User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+            return User.FindFirstValue("userId")!; // utilice el Claim personalizado para evitar algun conflicto y ser mas preciso
         }
 
         [HttpGet]
@@ -63,7 +63,8 @@ namespace InventarioApi.Controllers
             if (ProductoNuevo == null)
                 return StatusCode(500, "Error al crear producto");
 
-            return CreatedAtAction(nameof(GetProductoById), new { id = ProductoNuevo.Id }, ProductoNuevo);
+            //return CreatedAtAction(nameof(GetProductoById), new { id = ProductoNuevo.Id }, ProductoNuevo);
+            return Ok(ProductoNuevo);
         }
 
         [HttpPut("{id}")]
