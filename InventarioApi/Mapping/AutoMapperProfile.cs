@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using InventarioApi.Models;
-using InventarioApi.DTOs;
+using InventarioApi.DTOs.ProductoDto;
+using InventarioApi.DTOs.CategoriaDto;
 
 namespace InventarioApi.Mapping
 {
@@ -20,6 +21,13 @@ namespace InventarioApi.Mapping
 
             //Mapeo Producto --> ProductoUpdateDTO
             CreateMap<Producto, ProductoUpdateDTO>().ReverseMap();
+
+            //Mapeo Categoria --> CategoriaDTO
+            CreateMap<Categoria, CategoriaDTO>()
+                .ForMember(dest => dest.usuarioNombre, opt => opt.MapFrom(src => src.Usuario.UserName));
+
+            //Mapeo Categoria -- CategoriaDTO
+
 
 
 

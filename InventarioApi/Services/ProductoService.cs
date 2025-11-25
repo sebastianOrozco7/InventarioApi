@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using InventarioApi.Data;
-using InventarioApi.DTOs;
+using InventarioApi.DTOs.ProductoDto;
 using InventarioApi.Models;
 using Microsoft.EntityFrameworkCore;
 

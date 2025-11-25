@@ -1,4 +1,4 @@
-﻿using InventarioApi.DTOs;
+﻿using InventarioApi.DTOs.ProductoDto;
 
 namespace InventarioApi.Services
 {

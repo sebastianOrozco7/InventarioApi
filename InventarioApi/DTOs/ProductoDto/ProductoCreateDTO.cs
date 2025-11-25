@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace InventarioApi.DTOs
+namespace InventarioApi.DTOs.ProductoDto
 {
     public class ProductoCreateDTO
     {

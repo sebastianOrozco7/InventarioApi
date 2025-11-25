@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using InventarioApi.Models;
 using InventarioApi.Services;
 using System.Security.Claims;
-using InventarioApi.DTOs;
+using InventarioApi.DTOs.ProductoDto;
 
 
 namespace InventarioApi.Controllers
