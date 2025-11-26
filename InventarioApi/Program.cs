@@ -73,6 +73,7 @@ builder.Services.AddAuthentication(options =>
 // 1.5 Registro de servicios personalizados
 // --------------------------------
 builder.Services.AddScoped<IProductoService, ProductoService>();
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 
 
 

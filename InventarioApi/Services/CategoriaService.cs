@@ -18,7 +18,7 @@ namespace InventarioApi.Services
             _mapper = mapper;
         }
 
-        [HttpGet]
+        
         public async Task<List<CategoriaDTO>> GetAllCategorias(string usuarioId)
         {
             var Categorias = await _context.Categorias
@@ -29,7 +29,7 @@ namespace InventarioApi.Services
             return _mapper.Map<List<CategoriaDTO>>(Categorias);
         }
 
-        [HttpGet("{id}")]
+        
         public async Task<CategoriaDTO> GetCategoriaById(int id, string usuario)
         {
             var Categoria = await _context.Categorias
@@ -39,7 +39,7 @@ namespace InventarioApi.Services
             return _mapper.Map<CategoriaDTO>(Categoria);
         }
 
-        [HttpPost]
+        
         public async Task<CategoriaDTO> CreateCategoria(CategoriaCreateUpdateDTO CategoriaNuevaDTO, string usuarioId)
         {
             //mapeo del dto del usuario a la entidad principal Categoria  DTO --> Categoria
@@ -54,7 +54,7 @@ namespace InventarioApi.Services
             return await GetCategoriaById(CategoriaNueva.Id, usuarioId);
         }
 
-        [HttpPut("{id}")]
+        
         public async Task<CategoriaDTO> UpdateCategoria(int id, CategoriaCreateUpdateDTO CategoriaUpdateDTO, string usuarioId)
         {
             var Categoria = await _context.Categorias
@@ -70,7 +70,6 @@ namespace InventarioApi.Services
             return await GetCategoriaById(Categoria.Id, usuarioId);
         }
 
-        [HttpDelete("{id}")]
         public async Task<bool> DeleteCategoria(int id, string usuarioId)
         {
 

@@ -27,7 +27,7 @@ namespace InventarioApi.Mapping
                 .ForMember(dest => dest.usuarioNombre, opt => opt.MapFrom(src => src.Usuario.UserName));
 
             //Mapeo Categoria -- CategoriaDTO
-
+            CreateMap<Categoria, CategoriaCreateUpdateDTO>().ReverseMap();
 
 
 

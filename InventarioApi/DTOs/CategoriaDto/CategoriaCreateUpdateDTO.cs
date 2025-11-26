@@ -11,8 +11,5 @@ namespace InventarioApi.DTOs.CategoriaDto
 
         [MaxLength (200, ErrorMessage = "Descripccion demasiado larga")]
         public string Descripcion { get; set; }
-
-        [Required(ErrorMessage = "El id de usuario es Obligatorio")]
-        public string UsuarioId { get; set; }
     }
 }
