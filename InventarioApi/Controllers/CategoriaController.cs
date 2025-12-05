@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using InventarioApi.Models;
 using InventarioApi.Services;
 using System.Security.Claims;
-using InventarioApi.DTOs.ProductoDto;
 using InventarioApi.DTOs.CategoriaDto;
 
 

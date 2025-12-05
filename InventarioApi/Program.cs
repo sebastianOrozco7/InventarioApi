@@ -74,6 +74,8 @@ builder.Services.AddAuthentication(options =>
 // --------------------------------
 builder.Services.AddScoped<IProductoService, ProductoService>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<IProvedorService, ProvedorService>();
+builder.Services.AddScoped<IMovmientoService, MovimientoService>();
 
 
 

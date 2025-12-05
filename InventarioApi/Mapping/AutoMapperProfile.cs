@@ -2,6 +2,9 @@
 using InventarioApi.Models;
 using InventarioApi.DTOs.ProductoDto;
 using InventarioApi.DTOs.CategoriaDto;
+using InventarioApi.DTOs.ProvedorDto;
+using InventarioApi.DTOs.Provedor;
+using InventarioApi.DTOs.MovimientoDto;
 
 namespace InventarioApi.Mapping
 {
@@ -29,8 +32,18 @@ namespace InventarioApi.Mapping
             //Mapeo Categoria -- CategoriaDTO
             CreateMap<Categoria, CategoriaCreateUpdateDTO>().ReverseMap();
 
+            //Mapeo de Provedor --> ProvedorDTO
+            CreateMap<Provedor, ProvedorDTO>()
+                .ForMember(dest => dest.NombreUsuario, opt => opt.MapFrom(src => src.Usuario.UserName));
 
+            CreateMap<Provedor, ProvedorCreateUpdateDTO>().ReverseMap();
 
+            //Mapeo de Movimiento --> MovimientoInventarioDTO
+            CreateMap<MovimientoInventario, MovimientoInventarioDTO>()
+                .ForMember(dest => dest.UsuarioNombre, opt => opt.MapFrom(src => src.Usuario.UserName))
+                .ForMember(dest => dest.ProductoNombre, opt => opt.MapFrom(src => src.Producto.Nombre));
+
+            CreateMap<MovimientoInventario, MovimientoDTO>().ReverseMap();
         }
 
     }

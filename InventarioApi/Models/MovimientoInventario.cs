@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace InventarioApi.Models
 {
@@ -18,5 +19,9 @@ namespace InventarioApi.Models
 
         [MaxLength(200, ErrorMessage = "La Descripcion es demasiado larga, resumela")]
         public string Observacion {  get; set; }
+
+        public string UsuarioId { get; set; }
+        public IdentityUser Usuario { get; set; }
+
     }
 }
